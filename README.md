@@ -9,6 +9,7 @@ Politechnika Wrocławska 2020
 
 04.11.2020\
 Udostępniony został program do pobierania krzywych blasku gwiazd i ich analizy w celu wkrycia rozbłysków gwiazdowych.
-W celu uzuskania dokładniej informacji należy uruchomić: python start.py
+W celu uzuskania dokładniej informacji należy uruchomić:\
+python start.py
 
 Przykładowe wyniki obliczeń to pliki z końcówką *_out.dat.
