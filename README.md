@@ -1,8 +1,7 @@
 # praca-inzynierska
 Praca inżynierska "Implementacja systemu identyfikacji rozbłysków  gwiazdowych"
 
-Małgorzata Pietras 235794
-
+Małgorzata Pietras 235794\
 Kierunek: Automatyka i Robotyka (AIR)
 
 Specjalność: Technologie informacyjne w systemachautomatyki (ART)
