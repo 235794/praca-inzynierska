@@ -4,7 +4,8 @@ import getopt
 import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt 
+
 from gatspy.periodic import LombScargleFast
 from sklearn import linear_model
 from sklearn import preprocessing
@@ -20,7 +21,7 @@ def Flares(time, signal, period, sigma=3., n_points=5):
 #  - signal: sygnał
 #  - period: okres zmian jasności gwiazdy
 #  - sigma: próg detekcji (domyślnie 3.0)
-#  - n_points: minimaalna liczba punktów w rozbłysku (domyślnie 5) 
+#  - n_points: minimalna liczba punktów w rozbłysku (domyślnie 5) 
 
 # parametry wyjściowe:
 #  - tablice zawierające indeksy czasu startu i końca rozbłysków
@@ -72,7 +73,7 @@ def Flares(time, signal, period, sigma=3., n_points=5):
  stopp=[]
  j=0
 
-# odrzucenie zjawisk trwających któcej niż założony czas (domyślnie 5 puktów)
+# odrzucenie zjawisk trwających krócej niż założony czas (domyślnie 5 punktów)
  while j < (len(detections_index)-(int(n_points)+1)): 
   if detections_index[j] == 1:
    if np.sum(detections_index[j:j+int(n_points)]) == n_points:
@@ -130,7 +131,7 @@ def Result(time,signal,tstart,tstop, fileout=""):
   if not noplot:
    ax.scatter(time[ tstart[i]:tstop[i]+1 ], signal[ tstart[i]:tstop[i]+1 ], c="r", s=3) 
 
-# wypisanie parematrów rozbłysku
+# wypisanie parametrów rozbłysku
   if fileout:
    fil.write(line+"\n")
   else:
@@ -150,7 +151,7 @@ def Result(time,signal,tstart,tstop, fileout=""):
 # początek programu
 if __name__ == "__main__":
 
-# definiowane parametrow startowych
+# definiowane parametrów startowych
  save = False
  noplot = False
  file_out = ""
@@ -164,7 +165,7 @@ if __name__ == "__main__":
   print('Error')
   sys.exit()
 
-# wczytywanie parametrow opcjonalnych
+# wczytywanie parametrów opcjonalnych
  for opt, arg in opts:
   if opt == "--noplot":
    noplot = True
@@ -181,14 +182,14 @@ if __name__ == "__main__":
   time = data[:,0]
   signal = data[:,1]
 
-# okreslanie okresu rotacji gwiazdy za pomocą metody Lomb-Scargle - pakiet gatspy
-# założony zakres okresu rotacji zawiera się w 0.1-30 dniach (obserwacje z jednego sektora to ok. 27 dni)
+# określanie okresu zmienności gwiazdy za pomocą metody Lomb-Scargle - pakiet gatspy
+# założony zakres okresu zmienności zawiera się w 0.1-20 dniach (obserwacje z jednego sektora to ok. 27 dni)
   ls = LombScargleFast(fit_period=True,optimizer_kwds={"quiet": True})
   ls.optimizer.period_range = (0.1, 20.0)
   ls.fit(time,signal)
   period = ls.best_period
 
-# procedura szukania rozblyskow
+# procedura szukania rozbłysków
   tstart, tstop = Flares(time, signal, period, n_points=points, sigma=level)
 
 # zdefiniowanie pliku z wynikami
@@ -198,6 +199,5 @@ if __name__ == "__main__":
 # wypisanie wyników na ekran lub do plików
   Result(time,signal,tstart,tstop,fileout=file_out)
 
-# jezeli jest wiele plikow do analizy - wszytsko zaczyna się od nowa
+# jeżeli jest wiele plików do analizy - wszystko zaczyna się od nowa
   file_out = ""
-
