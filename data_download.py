@@ -57,7 +57,7 @@ for sector, date, nr, in zip(sectors, dates, nrs):
  except IOError as error:
   pass
 
-# jezeli plik zostal pobrany - odczytywanie danych z formatu FITS i zapisywanie do .dat
+# jeżeli plik został pobrany - odczytywanie danych z formatu FITS i zapisywanie do .dat
  if s_flag:
   with fits.open(fits_file, mode="readonly") as hdulist:
    tess_bjds = hdulist[1].data['TIME']
@@ -71,6 +71,4 @@ for sector, date, nr, in zip(sectors, dates, nrs):
    out = list(zip(tess_bjds[~ynan], 1000.*(pdcsap_fluxes[~ynan]-s.mean(pdcsap_fluxes[~ynan]))/s.mean(pdcsap_fluxes[~ynan]), pdcsap_fluxes_err[~ynan]/(s.mean(pdcsap_fluxes[~ynan])*1000.)))
    np.savetxt("TIC" + TIC + "-s" + str(sector) + ".dat", out, fmt=' %14.7f %14.7f %14.7f ')
 
-# finalnie w pliku znajduja sie: czas, sygnal i blad sygnalu
-
-     
+# finalnie w pliku znajdują się: czas, sygnał i błąd sygnału
