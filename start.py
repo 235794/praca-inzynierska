@@ -1,16 +1,16 @@
 # Małgorzata Pietras 235794
 # Kierunek: Automatyka i Robotyka (AIR)
-# Specjalność: Technologie informacyjne w systemachautomatyki (ART)
-# Praca inżynierksa "Implementacja systemu identyfikacji rozbłysków gwiazdowych"
+# Specjalność: Technologie informacyjne w systemach automatyki (ART)
+# Praca inżynierska "Implementacja systemu identyfikacji rozbłysków gwiazdowych"
 # Prowadzący pracę: Dr inż. Łukasz Jeleń, Katedra Informatyki Technicznej
 # Politechnika Wrocławska 2020
 
 # wymagane pakiety, które być może trzeba doinstalować: astropy, gatspy, sklearn
 
-# Program do pobierania krzywych blasku gwiazd i ich analizy w celu wkrycia rozbłysków gwiazdowych
-# W wersji podstawowej porgram:
+# Program do pobierania krzywych blasku gwiazd i ich analizy w celu wykrycia rozbłysków gwiazdowych
+# W wersji podstawowej program:
 #  - pobiera na wejściu numer TIC (TESS Input Catalog) gwiazdy lub plik z danymi
-#  - zwraca użytkownikowi parametry rozbłsyków: czas początku, końca i maksimum oraz amplitudę
+#  - zwraca użytkownikowi parametry rozbłysków: czas początku, końca i maksimum oraz amplitudę
 
 from os import system
 import glob, os
